@@ -376,12 +376,12 @@ for (const user of usersList) {
                         makeTag({ className: 'layout-row' },
                             makeTag({ className: 'layout-caption', innerHTML: 'bs' }),
                             makeTag({ className: 'layout-value', innerHTML: user.company?.bs })
-                        ),
+                        )
                     )
                 )
             )
         )
-    );
+    )
 }
 document.body.appendChild(layout);
 
