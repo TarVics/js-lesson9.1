@@ -396,6 +396,8 @@ document.body.appendChild(makeTag('pre', n => {
     n.innerText = ` Дану процедуру потрібно запускати на якісь іншій сторінці.
  На цій сторінці присутні лише параграфи з описом завдань - P.
  Крім цього, процедура виконує пошук тегів H1-H6
+ 
+ *** Додав цю процедуру до rules.html
 `}));
 
 function tagCollect (node = document.body) {
@@ -428,6 +430,8 @@ writeHeader(`зробити div contenteditable ввести будь яке ц�
 asd ->tab-> <asd></asd>
 `);
 
+// Потрібно стати курсором на пробіл за словом, тоді тиснути на ТАБ. Слово не повинно містити символів із кодом
+// меншим ніж англійська "A"
 const editText = makeTag('div', n => {
     n.style.width = '400px';
     n.style.height = '250px'
@@ -492,7 +496,7 @@ const editText = makeTag('div', n => {
             const element = e.currentTarget;
             const curPos = getCaret(element).position;
             const strData = element.textContent;
-            if (curPos > 0 && strData[curPos] === ' ') {
+            if (curPos > 0 && (strData[curPos] === ' ' || curPos === strData.length)) {
                 let prevPos = strData.lastIndexOf(' ', curPos - 1);
                 if (prevPos === -1) prevPos = 0; else prevPos++;
                 if (prevPos < curPos) {
